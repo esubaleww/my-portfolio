@@ -35,6 +35,18 @@ const skills = [
     name: "GitHub",
     img: "https://raw.githubusercontent.com/github/explore/main/topics/github/github.png",
   },
+  {
+    name: "C++",
+    img: "https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png",
+  },
+  {
+    name: "Java",
+    img: "https://raw.githubusercontent.com/github/explore/main/topics/java/java.png",
+  },
+  {
+    name: "Flutter",
+    img: "https://raw.githubusercontent.com/github/explore/main/topics/flutter/flutter.png",
+  },
 ];
 
 export default function Skills() {
