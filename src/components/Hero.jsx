@@ -1,7 +1,7 @@
-// src/components/Hero.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import profilePic from "../assets/images/profile2.jpg";
 
 export default function Hero() {
   return (
@@ -19,6 +19,14 @@ export default function Hero() {
         animate={{ scale: 1 }}
         transition={{ duration: 1.5 }}
       />
+      <motion.img
+        src={profilePic}
+        alt="Esubalew Worku"
+        className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover mb-6 border-4 border-white shadow-lg"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1 }}
+      />
 
       {/* Main heading */}
       <motion.h1
@@ -30,7 +38,6 @@ export default function Hero() {
         Hello, I'm Esubalew Worku
       </motion.h1>
 
-      {/* Typewriter subtitle */}
       <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -38,7 +45,11 @@ export default function Hero() {
         className="text-2xl md:text-3xl font-medium text-center mb-8"
       >
         <Typewriter
-          words={["Full Stack Developer", "Mobile & Web Developer", "AI Enthusiast"]}
+          words={[
+            "Full Stack Developer",
+            "Mobile & Web Developer",
+            "AI Enthusiast",
+          ]}
           loop={true}
           cursor
           cursorStyle="_"

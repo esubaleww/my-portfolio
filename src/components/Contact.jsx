@@ -21,12 +21,12 @@ export default function Contact() {
       link: "https://t.me/medhne",
     },
     {
-      name: "Email",
+      name: "esuw02024@gmail.com",
       icon: "📧",
       link: "mailto:esuw02024@gmail.com",
     },
     {
-      name: "Phone",
+      name: "+251933839525",
       icon: "📞",
       link: "tel:+251933839525",
     },
