@@ -1,91 +1,100 @@
-// src/components/Skills.jsx
-import React from "react";
 import { motion } from "framer-motion";
+import { skills } from "../data/skills";
 
-const skills = [
-  {
-    name: "React",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/react/react.png",
+const containerVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { staggerChildren: 0.1, duration: 0.5 },
   },
-  {
-    name: "Node.js",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/nodejs/nodejs.png",
-  },
-  {
-    name: "Tailwind CSS",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/tailwind/tailwind.png",
-  },
-  {
-    name: "JavaScript",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/javascript/javascript.png",
-  },
-  {
-    name: "React Native",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/react-native/react-native.png",
-  },
-  {
-    name: "HTML5",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/html/html.png",
-  },
-  {
-    name: "CSS3",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/css/css.png",
-  },
-  {
-    name: "GitHub",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/github/github.png",
-  },
-  {
-    name: "C++",
-    img: "https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png",
-  },
-  {
-    name: "Java",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/java/java.png",
-  },
-  {
-    name: "Flutter",
-    img: "https://raw.githubusercontent.com/github/explore/main/topics/flutter/flutter.png",
-  },
-];
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+};
 
 export default function Skills() {
   return (
     <section
       id="skills"
-      className="min-h-screen p-12 bg-gradient-to-br from-purple-50 to-pink-50 flex flex-col items-center"
+      className="
+        py-20
+        bg-slate-50 text-slate-900
+        dark:bg-slate-950 dark:text-slate-100
+      "
     >
-      <motion.h2
-        className="text-4xl md:text-5xl font-bold mb-12 text-center text-purple-700"
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7 }}
-      >
-        Skills & Technologies
-      </motion.h2>
+      <div className="max-w-5xl mx-auto px-4 md:px-8">
+        <motion.h2
+          className="
+            text-sm font-semibold tracking-[0.25em] uppercase mb-3 text-center
+            text-teal-600 dark:text-teal-400
+          "
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Skills & Technologies
+        </motion.h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-        {skills.map((skill, i) => (
-          <motion.div
-            key={i}
-            className="flex flex-col items-center bg-white rounded-xl shadow-md p-4 cursor-pointer hover:shadow-xl transition-shadow duration-300"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ scale: 1.1, rotate: 2 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 + i * 0.1 }}
-          >
-            <img
-              src={skill.img}
-              alt={skill.name}
-              className="w-20 h-20 object-contain mb-2"
-            />
-            <p className="text-center font-semibold text-gray-800">
-              {skill.name}
-            </p>
-          </motion.div>
-        ))}
+        <motion.p
+          className="text-2xl md:text-3xl font-bold text-center mb-10 text-slate-900 dark:text-slate-50"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
+          Tools I use to build products — and technologies I&apos;m learning.
+        </motion.p>
+
+        <motion.div
+          className="grid gap-6 md:grid-cols-2"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+        >
+          {skills.map((group) => (
+            <motion.div
+              key={group.group}
+              variants={cardVariants}
+              className="
+                rounded-2xl p-5 md:p-6 backdrop-blur-xl
+                border bg-white/90 border-slate-200
+                dark:border-slate-800 dark:bg-slate-900/70
+              "
+            >
+              <h3 className="text-sm font-semibold mb-4 flex items-center gap-2 text-slate-800 dark:text-slate-200">
+                <span className="inline-block h-1.5 w-1.5 rounded-full bg-teal-500 dark:bg-teal-400" />
+                {group.group}
+              </h3>
+
+              <div className="flex flex-wrap gap-3">
+                {group.items.map((skill) => (
+                  <div
+                    key={skill.name}
+                    className="
+                      flex items-center gap-2 rounded-full px-3 py-1.5 text-xs md:text-sm transition-colors
+                      bg-slate-100 text-slate-800 hover:bg-slate-200
+                      dark:bg-slate-800/80 dark:text-slate-100 dark:hover:bg-slate-700/90
+                    "
+                  >
+                    {skill.img && (
+                      <img
+                        src={skill.img}
+                        alt={skill.name}
+                        className="h-5 w-5 rounded object-contain"
+                      />
+                    )}
+                    <span>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
